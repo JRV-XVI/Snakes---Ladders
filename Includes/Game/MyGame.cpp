@@ -4,3 +4,4 @@ void MyGame::start()
 {
     cout << "Hello world" << endl;
 }
+
