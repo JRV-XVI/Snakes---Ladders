@@ -12,3 +12,4 @@ int Dice::roll()
     srand((unsigned int) time(NULL));
     return (rand() % sides) + 1;
 }
+
