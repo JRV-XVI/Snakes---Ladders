@@ -6,20 +6,20 @@ int random(int v1, int v2);
 int in(int val, int* arr);
 
 Board::Board(){
-  int lpos[laders];
+  int lpos[ladders];
   int spos[snakes];
 
   for (int i = 0; i<30; i++){
-    tiles[i] = 'N';
+    Table[i] = 'N';
   }
 
-  for (int j = 0; j<laders; j++){
+  for (int j = 0; j<ladders; j++){
     int n_ = random(0,29);
 
     while(in(n_, lpos)){
       n_ = random(0,29);
     }
-    tiles[j] = 'L';
+    Table[j] = 'L';
     lpos[j] = n_;
   }
 
@@ -29,7 +29,7 @@ Board::Board(){
     while(in(n_, spos)){
       n_ = random(0,29);
     }
-    tiles[j] = 'S';
+    Table[j] = 'S';
     spos[j] = n_;
   }
 }
