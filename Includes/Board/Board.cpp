@@ -1,27 +1,57 @@
 #include "Board.h"
+#include <cstdlib>
+#include <ctime>
 
-Board::Board()
-{
-    int stateTile = 0; // Switch to change a snake/ladder tile
-    for(int index = 1; index <= 30; index++) {
-        // Snake tile
-        if(index % 7 == 0 && stateTile != 0 && snakes > 0) {
-            Table[index] = 'S';
-            stateTile = 0;
-            snakes -= 1;
-        }
-        // Ladder tile
-        else if(index % 8 == 0 && stateTile == 0 && ladders > 0)
-        {
-            Table[index] = 'L';
-            stateTile = 1;
-            ladders -= 1;
-        }
-        // Empty tile
-        else {
-            Table[index] = 'N';
-        }
+int random(int v1, int v2);
+int in(int val, int* arr);
+
+Board::Board(){
+  int lpos[laders];
+  int spos[snakes];
+
+  for (int i = 0; i<30; i++){
+    tiles[i] = 'N';
+  }
+
+  for (int j = 0; j<laders; j++){
+    int n_ = random(0,29);
+
+    while(in(n_, lpos)){
+      n_ = random(0,29);
     }
+    tiles[j] = 'L';
+    lpos[j] = n_;
+  }
+
+  for (int j = 0; j<snakes; j++){
+    int n_ = random(0,29);
+
+    while(in(n_, spos)){
+      n_ = random(0,29);
+    }
+    tiles[j] = 'S';
+    spos[j] = n_;
+  }
+}
+
+int in(int val, int* arr){
+  int ans;
+  int l = sizeof(arr)/sizeof(int);
+
+  for(int i = 0; i<l; i++){
+    if (val == arr[i]){
+      return 1;
+    }
+  }
+  return 0;
+}
+
+int random(int v1, int v2){
+  int n;
+  n = v2 - v1;
+
+  srand((unsigned int) time(NULL));
+  return (rand() % (n+1) ) + v1;
 }
 
 void Board::getMatrix()
