@@ -1,17 +1,15 @@
-#ifndef MY_GAME
-#define MY_GAME
+#ifndef MYGAME
+#define MYGAME
 
-#include <iostream>
+class MyGame{
+  private:
+    int turn = 0;
+    char option;
 
-using namespace std;
-
-class MyGame
-{
-private:
-    /* data */
-public:
-    void start(); // Game logic
+  public:
+    void start();
+    int mainloop();
+    void handlopt();
 
 };
-
-#endif
+#endif // !MYGAME
