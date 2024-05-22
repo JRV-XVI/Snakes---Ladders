@@ -1,13 +1,22 @@
-#ifndef PLAYER
-#define PLAYER
+#ifndef PLAYER_H
+#define PLAYER_H
 
-class Player
-{
+
+class Player {
 private:
-    /* data */
-public:
-    Player(/* args */);
-};
 
+    int id;
+    int position = 1;
+
+public:
+    Player(int playerId);
+
+
+    int getId() ;
+    int getPosition() ;
+
+
+    void setPosition(int newPosition);
+};
 
 #endif
