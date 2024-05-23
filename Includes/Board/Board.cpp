@@ -31,7 +31,6 @@ Board::Board(){
     while(Table[n_] != 'N'){
       n_ = random(7,26);
     }
-    cout << n_ << endl;
     Table[n_] = 'S';
     spos[j] = n_;
   }
