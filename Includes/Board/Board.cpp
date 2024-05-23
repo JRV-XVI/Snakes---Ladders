@@ -7,36 +7,40 @@ bool srand_called = false;
 bool in(int val, int* arr);
 
 Board::Board(){
-  int lpos[ladders];
-  int spos[snakes];
+  int lpos[ladders]; // Ladders positions
+  int spos[snakes]; //Snakes positions
   int n_;
 
   for (int i = 0; i<30; i++){
-    Table[i] = 'N';
+    Table[i] = 'N'; //Define all tiles to a N
   }
 
   for (int j = 0; j<ladders; j++){
-    n_ = random(0,29);
+    n_ = random(7,26); //Makes a random selection of tiles 
 
-    while(in(n_, lpos) && n_ > 6 && n_ < 26){ 
-      n_ = random(0,29);
-    }
-    Table[n_] = 'L';
-    lpos[j] = n_;
+      while(in(n_, lpos)){  //Checks if that position is free
+        n_ = random(7,26);
+      }
+
+    Table[n_] = 'L'; //Change the value of the tile
+    lpos[j] = n_; //Storage the new ladder position
   }
 
+  //Repeate for snakes
   for (int j = 0; j<snakes; j++){
-    n_ = random(0,29);
+    n_ = random(7,26);
 
-    while(in(n_, spos) || in(n_, lpos) && n_ > 6 && n_ < 26){
-      n_ = random(0,29);
+    while(in(n_, spos) || in(n_, lpos) ){
+      n_ = random(7,26);
     }
     Table[n_] = 'S';
     spos[j] = n_;
   }
 }
 
+
 bool in(int val, int* arr){
+  //This function check if a value is inside of an array
   int ans;
   int l = sizeof(arr)/sizeof(int);
 
@@ -57,13 +61,3 @@ int random(int v1, int v2) {
     int n = v2 - v1;
     return (rand() % (n + 1)) + v1;
 }
-
-void Board::getMatrix()
-{
-    // Prints the type of the element on the table by index
-    for(int i = 0; i < 30; i++)
-    {
-        cout << Table[i] << endl;
-    }
-}
-
