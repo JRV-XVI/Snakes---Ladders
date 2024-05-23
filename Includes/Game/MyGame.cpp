@@ -38,19 +38,21 @@ void MyGame::handlopt(){
       cout << "--GAME OVER--" << endl;
       exit(0);
     } 
+    turn ++;
     
 }
 
 int MyGame::mainloop(){
   Player P1 (1); //set players and player IDs
   Player P2 (2);
+
   Board board; //Build board
   Dice dice; // create and roll Dice
   board.getMatrix();  //Get the tiles that make up the board
 
   while (1){
     //To get the record of which turn is
-    turn ++;
+    
     //Player 1 turn
     MyGame::handlopt(); //If the option is not continue it will end the program
 
