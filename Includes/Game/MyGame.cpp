@@ -85,7 +85,7 @@ int MyGame::mainloop(){
     cout <<"New position: "<< P1.getPosition()<<endl;
     }
     else{
-      cout << "Player 1 rolled a "<<num<< "a won" << endl;
+      cout << "Player 1 rolled "<<num<< " and won" << endl;
       exit(0);
     }
     
@@ -115,7 +115,7 @@ int MyGame::mainloop(){
     cout <<"New position: "<< P2.getPosition()<<endl;
     }
     else{
-      cout << "Player 2 rolled a "<<num<< "a won" << endl;
+      cout << "Player 2 rolled "<<num<< " and won" << endl;
       exit(0);
     }
   }
