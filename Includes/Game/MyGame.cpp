@@ -61,21 +61,24 @@ int MyGame::mainloop(){
     //Player 1 turn
     MyGame::handlopt(); //If the option is not continue it will end the program
 
-    num=dice.roll(); //Roll the Dice
+    num = dice.roll(); //Roll the Dice
     // apply tile effects
-    if (P1.getPosition()+num<30)
-    {
-    if (board.Table[P1.getPosition()+num-1]=='S'){
-      steps=P1.getPosition()+num-3;
+    if (P1.getPosition()+num >= 30){
+      cout << "Player 1 rolled "<<num<< " and won" << endl;
+      exit(0);
     }
-    else if (board.Table[P1.getPosition()+num-1]=='L')
+
+    if (board.Table[P1.getPosition()+num-1] == 'S'){
+      steps = P1.getPosition()+num-3;
+    }
+    else if (board.Table[P1.getPosition()+num-1] == 'L')
     {
-      steps=P1.getPosition()+num+3;
+      steps = P1.getPosition()+num+3;
     }
     else{
-      steps=P1.getPosition()+num;
+      steps = P1.getPosition()+num;
     }
-    
+  
     //Needed info for Player 1
     cout << "Turn: " << turn << endl;
     cout <<"Player ID: "<<P1.getId()<<endl<<"Position: "<<P1.getPosition()<<endl; // player ID and Position
@@ -83,28 +86,26 @@ int MyGame::mainloop(){
     cout <<"Tile type: "<< board.Table[P2.getPosition()+num-1]<<endl; // type of tile landed on
     P1.setPosition(steps); //set new Player position
     cout <<"New position: "<< P1.getPosition()<<endl;
-    }
-    else{
-      cout << "Player 1 rolled "<<num<< " and won" << endl;
-      exit(0);
-    }
+
     
     //Needed info for Player 2
-    MyGame::handlopt(); //If the option is not continue it will end the program
-    
-    num=dice.roll(); //Roll the Dice
-    if (P2.getPosition()+num<30)
-    {
-    // apply tile efects
-    if (board.Table[P2.getPosition()+num-1]=='S'){
-      steps=P2.getPosition()+num-3;
+    MyGame::handlopt(); //If the option is not continue it will end the program 
+    num = dice.roll(); //Roll the Dice
+
+    if (P2.getPosition()+num >= 30){
+      cout << "Player 2 rolled "<<num<< " and won" << endl;
+      exit(0);
     }
-    else if (board.Table[P2.getPosition()+num-1]=='L')
+    // apply tile efects
+    if (board.Table[P2.getPosition()+num-1] == 'S'){
+      steps = P2.getPosition()+num-3;
+    }
+    else if (board.Table[P2.getPosition()+num-1] == 'L')
     {
-      steps=P2.getPosition()+num+3;
+      steps = P2.getPosition()+num+3;
     }
     else{
-      steps=P2.getPosition()+num;
+      steps = P2.getPosition()+num;
     }
 
     //Needed info for Player 2
@@ -115,9 +116,4 @@ int MyGame::mainloop(){
     P2.setPosition(steps); //set new Player position
     cout <<"New position: "<< P2.getPosition()<<endl;
     }
-    else{
-      cout << "Player 2 rolled "<<num<< " and won" << endl;
-      exit(0);
-    }
-  }
 }
