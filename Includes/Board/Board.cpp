@@ -18,7 +18,7 @@ Board::Board(){
   for (int j = 0; j<ladders; j++){
     n_ = random(0,29);
 
-    while(in(n_, lpos)){
+    while(in(n_, lpos) && n_ > 6 && n < 26){ 
       n_ = random(0,29);
     }
     Table[n_] = 'L';
@@ -28,7 +28,7 @@ Board::Board(){
   for (int j = 0; j<snakes; j++){
     n_ = random(0,29);
 
-    while(in(n_, spos) || in(n_, lpos)){
+    while(in(n_, spos) || in(n_, lpos) && n_ > 6 && n < 26){
       n_ = random(0,29);
     }
     Table[n_] = 'S';
