@@ -63,7 +63,7 @@ int MyGame::mainloop(){
 
     num=dice.roll(); //Roll the Dice
     // apply tile effects
-    if (P1.getPosition()+num<29)
+    if (P1.getPosition()+num<30)
     {
     if (board.Table[P1.getPosition()+num-1]=='S'){
       steps=P1.getPosition()+num-3;
@@ -91,9 +91,10 @@ int MyGame::mainloop(){
     
     //Needed info for Player 2
     MyGame::handlopt(); //If the option is not continue it will end the program
-    if (P2.getPosition()+num<29)
-    {
+    
     num=dice.roll(); //Roll the Dice
+    if (P2.getPosition()+num<30)
+    {
     // apply tile efects
     if (board.Table[P2.getPosition()+num-1]=='S'){
       steps=P2.getPosition()+num-3;
