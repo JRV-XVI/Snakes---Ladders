@@ -1,8 +1,8 @@
 #include<iostream>
 #include "MyGame.h"
-#include "Board.h"
-#include "Player.h"
-#include "Dice.h"
+#include "../Board/Board.h"
+#include "../Player/Player.h"
+#include "../Dice/Dice.h"
 
 using namespace std;
   
@@ -52,7 +52,7 @@ int MyGame::mainloop(){
   int steps; // position after tile effects
   int num; // Number on wich the dice land on
 
-  board.getMatrix();  //Get the tiles that make up the board
+  cout << board << endl;  //Get the tiles that make up the board
 
   while (1){
     //To get the record of which turn is
