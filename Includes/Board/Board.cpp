@@ -6,8 +6,6 @@ int random(int v1, int v2);
 bool srand_called = false;
 
 Board::Board(){
-  int lpos[ladders]; // Ladders positions
-  int spos[snakes]; //Snakes positions
   int n_;
 
   for (int i = 0; i<30; i++){
@@ -21,7 +19,6 @@ Board::Board(){
         n_ = random(7,26);
       }
     Table[n_] = 'L'; //Change the value of the tile
-    lpos[j] = n_; //Storage the new ladder position
   }
 
   //Repeate for snakes
@@ -32,7 +29,6 @@ Board::Board(){
       n_ = random(7,26);
     }
     Table[n_] = 'S';
-    spos[j] = n_;
   }
 }
 
