@@ -18,7 +18,7 @@ git clone https://github.com/JRV-XVI/snakes-and-ladders.git
 Go to the project directory
 
 ```bash
-cd snakes-and-ladders
+cd snakes-and-ladders/src
 ```
 
 Compile the app
