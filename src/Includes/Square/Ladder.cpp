@@ -1,9 +1,9 @@
 #include "Ladder.h"
 
-char Ladder::getSymbol override(){
+char Ladder::getSymbol (){
   return symbol; 
 }
 
-int Ladder::getEffect override(){
+int Ladder::getEffect (){
   return effect;
 }

@@ -1,9 +1,9 @@
 #include "Snake.h"
 
-char Snake::getSymbol override(){
+char Snake::getSymbol (){
   return symbol; 
 }
 
-int Snake::getEffect override(){
+int Snake::getEffect (){
   return effect;
 }

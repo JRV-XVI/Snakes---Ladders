@@ -3,7 +3,7 @@
 
 class Square{
   private:
-    char symbol = "N"; //default symbol
+    char symbol = 'N'; //default symbol
     int effect = 0; //It does not add or substract positions
   
   public:
