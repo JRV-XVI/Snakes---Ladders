@@ -8,6 +8,8 @@ class Ladder: public Square {
     int effect = 3;
   
   public:
+    Ladder();
+    Ladder(int newEffect);
     char getSymbol() override;
     int getEffect() override;
 };

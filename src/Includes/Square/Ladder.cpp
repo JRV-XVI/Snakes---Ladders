@@ -1,5 +1,9 @@
 #include "Ladder.h"
 
+Ladder::Ladder(int newEffect){
+  effect = newEffect;
+}
+
 char Ladder::getSymbol (){
   return symbol; 
 }

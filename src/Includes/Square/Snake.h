@@ -8,6 +8,8 @@ class Snake: public Square {
     int effect = -3;
 
   public:
+    Snake();
+    Snake(int newEffect);
     char getSymbol() override;
     int getEffect() override;
 };
