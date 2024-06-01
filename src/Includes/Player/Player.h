@@ -5,18 +5,25 @@
 class Player {
 private:
 
-    int id;
-    int position = 1;
-
+    // Arrays to store player data
+    int playerCount;
+    int playerArray[100];
+    int idArray[100];
+    int posArray[100];
+    
 public:
-    Player(int playerId);
+    // Constructor
+    Player(); // Default constructor
+    Player(int); // Constructor with player count
 
+    // Getters
+    int getPlayerCount(); // Get player count
+    int getPlayer(int); // Get player
+    int getId(int); // Get player ID
+    int getPosition(int); // Get player position
 
-    int getId() ;
-    int getPosition() ;
-
-
-    void setPosition(int newPosition);
+    // Setters
+    void setPosition(int, int);
 };
 
 #endif
