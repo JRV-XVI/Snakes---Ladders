@@ -43,8 +43,7 @@ void MyGame::handlopt(){
 }
 
 int MyGame::mainloop(){
-  Player P1 (1); //set players and player IDs
-  Player P2 (2);
+  Player playerList = Player(); //set playerList
 
   Board board; //Build board
   Dice dice; // create and roll Dice
@@ -57,63 +56,64 @@ int MyGame::mainloop(){
   while (1){
     //To get the record of which turn is
     
-    
     //Player 1 turn
     MyGame::handlopt(); //If the option is not continue it will end the program
 
     num = dice.roll(); //Roll the Dice
     // apply tile effects
-    if (P1.getPosition()+num >= 30){
-      cout << "Player 1 rolled "<<num<< " and won" << endl;
+    if (playerList.getPosition(0) + num >= 30){
+      cout << "Player 1 rolled "<< num << " and won" << endl;
       exit(0);
     }
 
-    if (board.Table[P1.getPosition()+num-1] == 'S'){
-      steps = P1.getPosition()+num-3;
+    if (board.Table[playerList.getPosition(0) + num - 1] == 'S'){
+      steps = playerList.getPosition(0) + num - 3;
     }
-    else if (board.Table[P1.getPosition()+num-1] == 'L')
+    else if (board.Table[playerList.getPosition(0) + num - 1] == 'L')
     {
-      steps = P1.getPosition()+num+3;
+      steps = playerList.getPosition(0) + num + 3;
     }
     else{
-      steps = P1.getPosition()+num;
+      steps = playerList.getPosition(0) + num;
     }
   
     //Needed info for Player 1
     cout << "Turn: " << turn << endl;
-    cout <<"Player ID: "<<P1.getId()<<endl<<"Position: "<<P1.getPosition()<<endl; // player ID and Position
-    cout <<"Number Rolled:  "<< num<<endl; // number rolled
-    cout <<"Tile type: "<< board.Table[P2.getPosition()+num-1]<<endl; // type of tile landed on
-    P1.setPosition(steps); //set new Player position
-    cout <<"New position: "<< P1.getPosition()<<endl;
+    cout << "Player ID: "<< playerList.getId(0) << endl;
+    cout << "Position: " << playerList.getPosition(0) << endl; // player ID and Position
+    cout << "Number Rolled: " << num << endl; // number rolled
+    cout << "Tile type: " << board.Table[playerList.getPosition(0) + num - 1] << endl; // type of tile landed on
+    playerList.setPosition(0, steps); //set new Player position
+    cout << "New position: "<< playerList.getPosition(0) << endl;
 
     
     //Needed info for Player 2
     MyGame::handlopt(); //If the option is not continue it will end the program 
     num = dice.roll(); //Roll the Dice
 
-    if (P2.getPosition()+num >= 30){
-      cout << "Player 2 rolled "<<num<< " and won" << endl;
+    if (playerList.getPosition(1) + num >= 30){
+      cout << "Player 2 rolled "<< num << " and won" << endl;
       exit(0);
     }
     // apply tile efects
-    if (board.Table[P2.getPosition()+num-1] == 'S'){
-      steps = P2.getPosition()+num-3;
+    if (board.Table[playerList.getPosition(1) + num - 1] == 'S'){
+      steps = playerList.getPosition(1) + num - 3;
     }
-    else if (board.Table[P2.getPosition()+num-1] == 'L')
+    else if (board.Table[playerList.getPosition(1) + num - 1] == 'L')
     {
-      steps = P2.getPosition()+num+3;
+      steps = playerList.getPosition(1) + num + 3;
     }
     else{
-      steps = P2.getPosition()+num;
+      steps = playerList.getPosition(1) + num;
     }
 
     //Needed info for Player 2
     cout << "Turn: " << turn << endl;
-    cout <<"Player ID: "<<P2.getId()<<endl<<"Position: "<<P2.getPosition()<<endl; // player ID and Position
-    cout <<"Number Rolled: "<< num<<endl; // number rolled
-    cout <<"Tile type: "<< board.Table[P2.getPosition()+num-1]<<endl; // type of tile landed on
-    P2.setPosition(steps); //set new Player position
-    cout <<"New position: "<< P2.getPosition()<<endl;
+    cout << "Player ID: "<< playerList.getId(1) << endl;
+    cout << "Position: "<< playerList.getPosition(1) << endl; // player ID and Position
+    cout << "Number Rolled: "<< num <<endl; // number rolled
+    cout << "Tile type: "<< board.Table[playerList.getPosition(1) + num - 1] << endl; // type of tile landed on
+    playerList.setPosition(1, steps); //set new Player position
+    cout << "New position: " << playerList.getPosition(1) << endl;
     }
 }
