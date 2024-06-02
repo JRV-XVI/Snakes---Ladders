@@ -46,10 +46,47 @@ void MyGame::handlopt(){
 }
 
 int MyGame::mainloop(){
-  Player playerList = Player(); //set playerList
-  Square *iter; //This will be iterating on the board
+  char gameConfig;
+  cout<<"if you would like to change the game settings enter C, or D if you would like  the default setting: ";
+  cin>>gameConfig;
+  while (gameConfig !='D' && gameConfig !='C')
+  {
+    cout<<"it seems like you entered a non-valid option, try again: ";
+    cin>>gameConfig;
+  }
+  
+  if (gameConfig == 'D'){
+    Player playerList;
+    Board board;
+  }
+  else{
+    int numPlayers;
+    int size;
+    int numSnakes;
+    int numLadders;
+    int snakeEffect;
+    int ladderEffect;
 
-  Board board; //Build board
+    cout<<"Please enter the amaount of players: ";
+    cin>>numPlayers;
+    Player playerList(numPlayers);
+
+    cout<<"Now enter the amoun of tiles you want in de game board";
+    cin>>size;
+    cout<<"Enter the amount on snakes: ";
+    cin>>numSnakes;
+    cout<<"Enter the amount of laddes: ";
+    cin>>numLadders;
+    cout<<"Enter the tile efect for ladder tiles: ";
+    cin>>ladderEffect;
+    cout<<"And finally enter the effect for snake tiles: ";
+    cin>>snakeEffect;
+    Board board(size,numSnakes,numLadders,ladderEffect,snakeEffect);
+
+  }
+  
+  Square *iter; //This will be iterating on the board
+  
   Dice dice; // create and roll Dice
 
   int steps; // position after tile effects
