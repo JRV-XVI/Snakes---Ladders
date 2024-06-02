@@ -3,6 +3,9 @@
 #include "../Board/Board.h"
 #include "../Player/Player.h"
 #include "../Dice/Dice.h"
+#include "../Square/Snake.h"
+#include "../Square/Square.h"
+#include "../Square/Ladder.h"
 
 using namespace std;
   
@@ -44,6 +47,7 @@ void MyGame::handlopt(){
 
 int MyGame::mainloop(){
   Player playerList = Player(); //set playerList
+  Square *iter; //This will be iterating on the board
 
   Board board; //Build board
   Dice dice; // create and roll Dice
@@ -66,10 +70,12 @@ int MyGame::mainloop(){
       exit(0);
     }
 
-    if (board.Table[playerList.getPosition(0) + num - 1] == 'S'){
+    iter = board.Table[playerList.getPosition(0) + num - 1];
+
+    if (iter -> getSymbol() == 'S'){
       steps = playerList.getPosition(0) + num - 3;
     }
-    else if (board.Table[playerList.getPosition(0) + num - 1] == 'L')
+    else if (iter -> getSymbol() == 'L')
     {
       steps = playerList.getPosition(0) + num + 3;
     }
@@ -82,7 +88,7 @@ int MyGame::mainloop(){
     cout << "Player ID: "<< playerList.getId(0) << endl;
     cout << "Position: " << playerList.getPosition(0) << endl; // player ID and Position
     cout << "Number Rolled: " << num << endl; // number rolled
-    cout << "Tile type: " << board.Table[playerList.getPosition(0) + num - 1] << endl; // type of tile landed on
+    cout << "Tile type: " << iter -> getSymbol() << endl; // type of tile landed on
     playerList.setPosition(0, steps); //set new Player position
     cout << "New position: "<< playerList.getPosition(0) << endl;
 
@@ -95,11 +101,14 @@ int MyGame::mainloop(){
       cout << "Player 2 rolled "<< num << " and won" << endl;
       exit(0);
     }
+
     // apply tile efects
-    if (board.Table[playerList.getPosition(1) + num - 1] == 'S'){
+    iter = board.Table[playerList.getPosition(1) + num - 1];
+
+    if (iter -> getSymbol() == 'S'){
       steps = playerList.getPosition(1) + num - 3;
     }
-    else if (board.Table[playerList.getPosition(1) + num - 1] == 'L')
+    else if (iter ->getSymbol() == 'L')
     {
       steps = playerList.getPosition(1) + num + 3;
     }
@@ -112,7 +121,7 @@ int MyGame::mainloop(){
     cout << "Player ID: "<< playerList.getId(1) << endl;
     cout << "Position: "<< playerList.getPosition(1) << endl; // player ID and Position
     cout << "Number Rolled: "<< num <<endl; // number rolled
-    cout << "Tile type: "<< board.Table[playerList.getPosition(1) + num - 1] << endl; // type of tile landed on
+    cout << "Tile type: "<< iter ->getSymbol() << endl; // type of tile landed on
     playerList.setPosition(1, steps); //set new Player position
     cout << "New position: " << playerList.getPosition(1) << endl;
     }
