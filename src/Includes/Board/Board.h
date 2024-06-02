@@ -16,24 +16,30 @@ private:
     int size = 30;
     int ladderEffect = 3;
     int snakeEffect = -3;
-    vector <Square*> Table; //Table for the ladders and snakes
 
 
 public:
+
+    vector <Square*> Table; //Table for the ladders and snakes
+
     Board(); // Constructor
     Board(int newSize, int newSnakes, int newLadders,
         int newLadderEffect, int newSnakeEffect); // Constructor of different size
 
     void setBoard();
-    void getMatrix(); // Method to check the setting of table (snake, ladder, empty)
     bool checkCircularPath(int index); // Will avoid un finish excecutions 
 
+
     friend ostream& operator<<(ostream& os, Board b){
-      for(int i = 0; i < 30; i++){
-        os << b.Table[i] << " ";
+      Square *iter;
+
+      for(int i = 0; i < b.Table.size(); i++){
+        iter = b.Table[i];
+        os << iter -> getSymbol() << " ";
       }
       return os;
     }
+
 };
 
 #endif

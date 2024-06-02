@@ -1,5 +1,5 @@
-snake: Board.o Dice.o MyGame.o Player.o 
-	g++ -o snake.o snakes.cpp Board.o Dice.o MyGame.o Player.o 
+snake: Board.o Dice.o MyGame.o Player.o Snake.o Ladder.o Square.o
+	g++ -o snake.o snakes.cpp Board.o Dice.o MyGame.o Player.o Snake.o Ladder.o Square.o
 
 Board.o: Includes/Board/Board.cpp Includes/Board/Board.h
 	g++ -c -o Board.o Includes/Board/Board.cpp
