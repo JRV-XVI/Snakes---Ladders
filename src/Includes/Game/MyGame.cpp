@@ -72,17 +72,9 @@ int MyGame::mainloop(){
 
     iter = board.Table[playerList.getPosition(0) + num - 1];
 
-    if (iter -> getSymbol() == 'S'){
-      steps = playerList.getPosition(0) + num - 3;
-    }
-    else if (iter -> getSymbol() == 'L')
-    {
-      steps = playerList.getPosition(0) + num + 3;
-    }
-    else{
-      steps = playerList.getPosition(0) + num;
-    }
-  
+    //This line makes the update of the position
+    steps = playerList.getPosition(0) + num + iter->getEffect();
+
     //Needed info for Player 1
     cout << "Turn: " << turn << endl;
     cout << "Player ID: "<< playerList.getId(0) << endl;
@@ -105,16 +97,8 @@ int MyGame::mainloop(){
     // apply tile efects
     iter = board.Table[playerList.getPosition(1) + num - 1];
 
-    if (iter -> getSymbol() == 'S'){
-      steps = playerList.getPosition(1) + num - 3;
-    }
-    else if (iter ->getSymbol() == 'L')
-    {
-      steps = playerList.getPosition(1) + num + 3;
-    }
-    else{
-      steps = playerList.getPosition(1) + num;
-    }
+    //Update the steps of the player
+    steps = playerList.getPosition(1) + num + iter->getEffect();
 
     //Needed info for Player 2
     cout << "Turn: " << turn << endl;
