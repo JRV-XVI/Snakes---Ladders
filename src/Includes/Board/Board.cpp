@@ -54,13 +54,13 @@ void Board::setBoard(){
 
   //Repeate for snakes
   for (int j = 0; j<snakes; j++){
-    n_ = random(r1,size);
+    n_ = random(r1,size-1);
     iter = Table[n_];
 
     //This will try to find a valid index that is not used
     //and it does not imply a circular path
     while(iter->getSymbol() != 'N' || checkCircularPath(n_)){
-      n_ = random(r1, size);
+      n_ = random(r1, size-1);
       iter = Table[n_];
     }
 

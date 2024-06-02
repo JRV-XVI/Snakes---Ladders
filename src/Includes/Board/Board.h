@@ -4,7 +4,6 @@
 #include<vector>
 #include "../Square/Square.h"
 
-
 using namespace std;
 
 class Board
