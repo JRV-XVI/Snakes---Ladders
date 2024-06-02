@@ -1,11 +1,6 @@
-#include<iostream>
+#include <iostream>
 #include "MyGame.h"
-#include "../Board/Board.h"
-#include "../Player/Player.h"
-#include "../Dice/Dice.h"
-#include "../Square/Snake.h"
-#include "../Square/Square.h"
-#include "../Square/Ladder.h"
+#include "GameType.h"
 
 using namespace std;
   
@@ -27,86 +22,56 @@ void MyGame::start(){
   MyGame::mainloop();
 }
 
-void MyGame::handlopt(){
-    cout << "Press C to continue next turn" << endl;
-    cout << "Press E to end the game" << endl;
-    cin >> option;
-    
-    while( option != 'E' && option != 'C'){
-      cout << "Invalid option, please press C to continue next turn or E to end the game"  << endl;
-      cin >> option;
-    }
-
-    if (option != 'C'){
-      cout << "--GAME OVER--" << endl;
-      exit(0);
-    } 
-    turn ++;
-    
-}
-
 int MyGame::mainloop(){
-  Player playerList = Player(); //set playerList
-  Square *iter; //This will be iterating on the board
+  char gameMode; // Manual or Automatic
 
-  Board board; //Build board
-  Dice dice; // create and roll Dice
+  cout << "____Menu____" << endl; 
+  cout << "M) Manual" << endl; // Manual game configuration
+  cout << "A) Automatic" << endl; // Automatic game configuration
+  cin >> option;
+  
+  if (option != 'M' && option != 'A'){
+    cout << "Invalid option please." << endl;
+    MyGame::mainloop();
+    exit(0);
+  }
 
-  int steps; // position after tile effects
-  int num; // Number on wich the dice land on
+  gameMode = option;
 
-  cout << board << endl;  //Get the tiles that make up the board
-
-  while (1){
-    //To get the record of which turn is
+  cout << "D) Default" << endl; // Default game configuration
+  cout << "C) Custom" << endl; // Custom game configuration
+  cin >> option;
+  
+  while (option != 'D' && option != 'C'){
+    cout << "Invalid option please." << endl;
+    cout << "D) Default" << endl;
+    cout << "C) Custom" << endl;
+    cin >> option;
+  }
+  
+  if (gameMode == 'M' && option == 'D'){
+      GameType game;
+  }
+  else if (gameMode == 'A' && option == 'D') {
+    GameType game(gameMode);
+  }
+  else {
+    int newSize, newSnakes, newLadders, newLadderEffect, newSnakeEffect, players;
+    cout << "Enter the size of the board" << endl;
+    cin >> newSize;
+    cout << "Enter the number of snakes" << endl;
+    cin >> newSnakes;
+    cout << "Enter the number of ladders" << endl;
+    cin >> newLadders;
+    cout << "Enter the effect of the ladders" << endl;
+    cin >> newLadderEffect;
+    cout << "Enter the effect of the snakes" << endl;
+    cin >> newSnakeEffect;
+    cout << "Enter the number of players" << endl;
+    cin >> players;
     
-    //Player 1 turn
-    MyGame::handlopt(); //If the option is not continue it will end the program
+    GameType game(gameMode, newSize, newSnakes, newLadders, newLadderEffect, newSnakeEffect, players);
+  }
 
-    num = dice.roll(); //Roll the Dice
-    // apply tile effects
-    if (playerList.getPosition(0) + num >= 30){
-      cout << "Player 1 rolled "<< num << " and won" << endl;
-      exit(0);
-    }
-
-    iter = board.Table[playerList.getPosition(0) + num - 1];
-
-    //This line makes the update of the position
-    steps = playerList.getPosition(0) + num + iter->getEffect();
-
-    //Needed info for Player 1
-    cout << "Turn: " << turn << endl;
-    cout << "Player ID: "<< playerList.getId(0) << endl;
-    cout << "Position: " << playerList.getPosition(0) << endl; // player ID and Position
-    cout << "Number Rolled: " << num << endl; // number rolled
-    cout << "Tile type: " << iter -> getSymbol() << endl; // type of tile landed on
-    playerList.setPosition(0, steps); //set new Player position
-    cout << "New position: "<< playerList.getPosition(0) << endl;
-
-    
-    //Needed info for Player 2
-    MyGame::handlopt(); //If the option is not continue it will end the program 
-    num = dice.roll(); //Roll the Dice
-
-    if (playerList.getPosition(1) + num >= 30){
-      cout << "Player 2 rolled "<< num << " and won" << endl;
-      exit(0);
-    }
-
-    // apply tile efects
-    iter = board.Table[playerList.getPosition(1) + num - 1];
-
-    //Update the steps of the player
-    steps = playerList.getPosition(1) + num + iter->getEffect();
-
-    //Needed info for Player 2
-    cout << "Turn: " << turn << endl;
-    cout << "Player ID: "<< playerList.getId(1) << endl;
-    cout << "Position: "<< playerList.getPosition(1) << endl; // player ID and Position
-    cout << "Number Rolled: "<< num <<endl; // number rolled
-    cout << "Tile type: "<< iter ->getSymbol() << endl; // type of tile landed on
-    playerList.setPosition(1, steps); //set new Player position
-    cout << "New position: " << playerList.getPosition(1) << endl;
-    }
+  return 0;
 }

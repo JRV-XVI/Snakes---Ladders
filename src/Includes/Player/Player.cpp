@@ -6,7 +6,7 @@ Player::Player() {
     playerCount = 2;
     for(int i = 0; i < playerCount; i++) {
         playerArray[i] = i + 1;
-        idArray[i] = i +1;
+        idArray[i] = i + 1;
         posArray[i] = 1;
     }
 }
@@ -14,8 +14,8 @@ Player::Player() {
 Player::Player(int players) {
     playerCount = players;
     for(int i = 0; i < playerCount; i++) {
-        playerArray[i] = 1;
-        idArray[i] = 1;
+        playerArray[i] = i + 1;
+        idArray[i] = i + 1;
         posArray[i] = 1;
     }
 }
