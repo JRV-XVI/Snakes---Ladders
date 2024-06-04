@@ -9,7 +9,7 @@ GameType::GameType() {
     board = Board(); //Build board
     Dice dice;
     Square *iter;
-  
+  int maxTurn = 10;
   int steps; // position after tile effects
   int num; // Number on wich the dice land on
 
@@ -18,6 +18,7 @@ GameType::GameType() {
   while (true){
     //To get the record of which turn is
     
+    checkTurn();//Checking for max turn
     //Player 1 turn
     GameType::handlopt(); //If the option is not continue it will end the program
 
@@ -43,7 +44,8 @@ GameType::GameType() {
     cout << "New position: "<< playerList.getPosition(0) << endl;
 
     cout << endl;
-    
+
+    checkTurn();//Checking for max turn
     //Needed info for Player 2
     GameType::handlopt(); //If the option is not continue it will end the program 
     num = dice.roll(); //Roll the Dice
@@ -84,6 +86,7 @@ GameType::GameType(char option) {
 
     while (true) {
         for (int index = 0; index < 2; index++) {
+            checkTurn();//Checking for max turn
             cout << endl;
             turn++;
             num = dice.roll(); //Roll the Dice
@@ -112,11 +115,12 @@ GameType::GameType(char option) {
     }
 }
 
-GameType::GameType(char option, int newSize, int newSnakes, int newLadders, int newLadderEffect, int newSnakeEffect, int players) {
+GameType::GameType(char option, int newSize, int newSnakes, int newLadders, int newLadderEffect, int newSnakeEffect, int players, int turnLimit) {
     playerList = Player(players); //set playerList
     board = Board(newSize, newSnakes, newLadders, newLadderEffect, newSnakeEffect); //Build board
     Dice dice;
     Square *iter;
+    maxTurn = turnLimit;
 
     int num = 0; // Number on wich the dice land on
     int steps = 0; // position after tile effects
@@ -127,6 +131,7 @@ GameType::GameType(char option, int newSize, int newSnakes, int newLadders, int 
 
         while (true) {
             for (int index = 0; index < playerList.getPlayerCount(); index++) {
+                checkTurn();//Checking for max turn
                 cout << endl;
                 turn++;
                 num = dice.roll(); //Roll the Dice
@@ -160,6 +165,7 @@ GameType::GameType(char option, int newSize, int newSnakes, int newLadders, int 
         while (true) {
             
             for (int index = 0; index < playerList.getPlayerCount(); index++) {
+                checkTurn();//Checking for max turn
                 GameType::handlopt(); //If the option is not continue it will end the program
                 num = dice.roll(); //Roll the Dice
 
@@ -206,4 +212,17 @@ void GameType::handlopt() {
 
     turn ++;
     
+}
+
+void GameType::checkTurn(){
+    if (turn>=maxTurn){
+        for (int i=1;i<playerList.getPlayerCount();i++){
+            if (playerList.getPosition(winnerByDefault)<playerList.getPosition(i)){
+                winnerByDefault=i;
+            }
+        }
+        cout<<"The max turn limit has been reached, Player "<<winnerByDefault+1<<" has won by default with a total of "<<<playerList.getPosition(i)<<" tiles"<<endll;
+        exit(0);
+}
+
 }

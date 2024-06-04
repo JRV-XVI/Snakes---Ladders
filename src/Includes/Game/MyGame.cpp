@@ -56,7 +56,7 @@ int MyGame::mainloop(){
     GameType game(gameMode);
   }
   else {
-    int newSize, newSnakes, newLadders, newLadderEffect, newSnakeEffect, players;
+    int newSize, newSnakes, newLadders, newLadderEffect, newSnakeEffect, players, turnLimit;
     cout << "Enter the size of the board" << endl;
     cin >> newSize;
     cout << "Enter the number of snakes" << endl;
@@ -69,8 +69,10 @@ int MyGame::mainloop(){
     cin >> newSnakeEffect;
     cout << "Enter the number of players" << endl;
     cin >> players;
+    cout<< "Enter the max number of turns"<<endl;
+    cin>> turnLimit;
     
-    GameType game(gameMode, newSize, newSnakes, newLadders, newLadderEffect, newSnakeEffect, players);
+    GameType game(gameMode, newSize, newSnakes, newLadders, newLadderEffect, newSnakeEffect, players, turnLimit);
   }
 
   return 0;
