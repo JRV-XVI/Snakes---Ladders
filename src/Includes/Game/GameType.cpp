@@ -9,7 +9,6 @@ GameType::GameType() {
     board = Board(); //Build board
     Dice dice;
     Square *iter;
-    maxTurn = 4;
     int steps; // position after tile effects
     int num; // Number on wich the dice land on
 
@@ -53,7 +52,6 @@ GameType::GameType(char option) {
   
     int num = 0; // Number on wich the dice land on
     int steps = 0; // position after tile effects
-    maxTurn = 4;
 
     cout << board << endl;  //Get the tiles that make up the board
 
@@ -105,7 +103,6 @@ GameType::GameType(char option, int newSize, int newSnakes, int newLadders, int 
             for (int index = 0; index < playerList.getPlayerCount(); index++) {
                 turn++;
                 cout << endl;
-                turn++;
                 num = dice.roll(); //Roll the Dice
                 // apply tile effects
                 if (playerList.getPosition(index) + num >= newSize){

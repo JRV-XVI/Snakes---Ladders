@@ -11,7 +11,7 @@
 class GameType {
   private:
     int turn = 0;
-    int maxTurn = 0;
+    int maxTurn = 10;
     int winnerByDefault=0;
     Player playerList;
     Board board;
