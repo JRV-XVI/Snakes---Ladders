@@ -4,7 +4,7 @@ The fundamental OOP concepts implemented in the project were the use of abstract
 
 For this second part of the project we had to implement concepts like:
 Inheritance on the classes Square, Snake and Ladder to save time and declare less atributes.
-Polymorfism in the constructors for the class GameType, this way we got to simlify our code when we had to set the default and customize options.
+Polymorfism in the constructors for the class GameType, this way we got to simplify our code when we had to set the default and customize options.
 
 UML diagram
 
