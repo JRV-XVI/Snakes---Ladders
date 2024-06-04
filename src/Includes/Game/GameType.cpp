@@ -219,10 +219,12 @@ void GameType::checkTurn(){
         for (int i=1;i<playerList.getPlayerCount();i++){
             if (playerList.getPosition(winnerByDefault)<playerList.getPosition(i)){
                 winnerByDefault=i;
+
+            cout<<"The max turn limit has been reached, Player "<<winnerByDefault+1<<" has won by default with a total of "<<playerList.getPosition(i)<<" tiles"<<endl;
+            exit(0);
             }
         }
-        cout<<"The max turn limit has been reached, Player "<<winnerByDefault+1<<" has won by default with a total of "<<<playerList.getPosition(i)<<" tiles"<<endll;
-        exit(0);
+
 }
 
 }
