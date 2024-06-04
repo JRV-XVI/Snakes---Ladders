@@ -33,7 +33,11 @@ g++ -c -o Board.o Includes/Board/Board.cpp
 g++ -c -o Dice.o Includes/Dice/Dice.cpp
 g++ -c -o MyGame.o Includes/Game/MyGame.cpp 
 g++ -c -o Player.o Includes/Player/Player.cpp
-g++ -o snake.o snakes.cpp Board.o Dice.o MyGame.o Player.o
+g++ -c -o Ladder.o Includes/Square/Ladder.cpp
+g++ -c -o Snake.o Includes/Square/Snake.cpp
+g++ -c -o Square.o Includes/Square/Square.cpp
+g++ -c -o GameType.o Includes/Game/GameType.cpp
+g++ -o snakes.o snakes.cpp Board.o Dice.o MyGame.o Player.o Square.o Snake.o Ladder.o GameType.o
 ```
 
 Run the code
