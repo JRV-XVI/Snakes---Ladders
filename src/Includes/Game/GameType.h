@@ -11,6 +11,8 @@
 class GameType {
   private:
     int turn = 0;
+    int maxTurn = 0;
+    int winnerByDefault=0;
     Player playerList;
     Board board;
 
@@ -18,9 +20,10 @@ class GameType {
     GameType(); // Manual for 2 players
     GameType(char option); // Automatic for 2 players
     GameType(char option, int newSize, int newSnakes, int newLadders,
-        int newLadderEffect, int newSnakeEffect, int players); // Costum game configuration
+        int newLadderEffect, int newSnakeEffect, int players,int turnLimit); // Costum game configuration
 
     void handlopt();
+    void checkTurn();
 };
 
 #endif
